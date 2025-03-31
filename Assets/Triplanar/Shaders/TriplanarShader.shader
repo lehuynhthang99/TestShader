@@ -14,7 +14,7 @@ Shader "Unlit/TriplanarShader"
 
         Pass
         {
-            CGPROGRAM
+            HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
 
@@ -65,7 +65,7 @@ Shader "Unlit/TriplanarShader"
                 float4 col = xSample * weights.x + ySample * weights.y + zSample * weights.z;
                 return col;
             }
-            ENDCG
+            ENDHLSL
         }
     }
 }

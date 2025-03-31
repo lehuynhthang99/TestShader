@@ -12,7 +12,7 @@ Shader "Unlit/ReflectedCubemapMapping"
 
         Pass
         {
-            CGPROGRAM
+            HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
 
@@ -54,7 +54,7 @@ Shader "Unlit/ReflectedCubemapMapping"
                 col *= _BaseColor;
                 return col;
             }
-            ENDCG
+            ENDHLSL
         }
     }
 }

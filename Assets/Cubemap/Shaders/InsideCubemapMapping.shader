@@ -12,7 +12,7 @@ Shader "Unlit/InsideCubemapMapping"
 
         Pass
         {
-            CGPROGRAM
+            HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
 
@@ -48,7 +48,7 @@ Shader "Unlit/InsideCubemapMapping"
                 col *= _BaseColor;
                 return col;
             }
-            ENDCG
+            ENDHLSL
         }
     }
 }
