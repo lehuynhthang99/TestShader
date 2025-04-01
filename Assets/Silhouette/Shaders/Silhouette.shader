@@ -48,14 +48,19 @@ Shader "Unlit/Silhouette"
 
             float4 frag (v2f i) : SV_Target
             {
+                float currentDepth = i.positionCS.z / i.positionCS.w;
+
                 // sample the texture
                 float2 screenUVs = i.positionSS.xy / i.positionSS.w;
                 float rawDepth = tex2D(_CameraDepthTexture, screenUVs).r;
 
                 float scene01Depth = Linear01Depth(rawDepth);
 
-                float4 col = lerp(_ForegroundColor, _BackgroundColor, scene01Depth);
+                float delta = (scene01Depth - currentDepth) / (1.0f - currentDepth);
 
+                // float4 col = lerp(_ForegroundColor, _BackgroundColor,1 - pow(1 - delta, 2));
+                float4 col = lerp(_ForegroundColor, _BackgroundColor,delta);
+                col.a = 1.0f;
                 return col;
             }
             ENDHLSL
